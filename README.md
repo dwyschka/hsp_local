@@ -1,7 +1,5 @@
 # Haas+Sohn Stove (Local)
 
-**English** | [Deutsch](README.de.md)
-
 [![Validate](https://github.com/dwyschka/hsp_local/actions/workflows/validate.yml/badge.svg)](https://github.com/dwyschka/hsp_local/actions/workflows/validate.yml)
 
 A Home Assistant **custom integration** for Haas+Sohn pellet stoves that talks
