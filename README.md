@@ -112,4 +112,4 @@ openHAB Haas+Sohn Pellet Stove binding.
 
 ## License
 
-Provided as-is, without warranty. Use at your own risk.
+This project is licensed under the [MIT License](LICENSE).

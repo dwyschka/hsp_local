@@ -94,4 +94,4 @@ project and the openHAB Haas+Sohn binding for documenting the local protocol.
 
 ## License
 
-Provided as-is, without warranty. Use at your own risk.
+This project is licensed under the [MIT License](../../LICENSE).

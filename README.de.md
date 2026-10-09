@@ -114,4 +114,4 @@ openHAB-Binding für Haas+Sohn Pelletöfen.
 
 ## Lizenz
 
-Bereitgestellt wie besehen, ohne Gewähr. Nutzung auf eigenes Risiko.
+Dieses Projekt steht unter der [MIT-Lizenz](LICENSE).
