@@ -19,7 +19,7 @@ from homeassistant.const import (
     UnitOfTime,
 )
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .coordinator import HspLocalConfigEntry, HspLocalDataUpdateCoordinator
 from .entity import HspLocalEntity
@@ -142,7 +142,7 @@ SENSORS: tuple[HspSensorEntityDescription, ...] = (
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: HspLocalConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up Haas+Sohn sensor entities."""
     coordinator = entry.runtime_data

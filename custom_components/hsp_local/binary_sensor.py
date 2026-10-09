@@ -11,7 +11,7 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .coordinator import HspLocalConfigEntry, HspLocalDataUpdateCoordinator
 from .entity import HspLocalEntity
@@ -47,7 +47,7 @@ BINARY_SENSORS: tuple[HspBinarySensorEntityDescription, ...] = (
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: HspLocalConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up Haas+Sohn binary sensor entities."""
     coordinator = entry.runtime_data

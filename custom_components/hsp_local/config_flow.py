@@ -7,7 +7,7 @@ from typing import Any
 import voluptuous as vol
 
 from homeassistant import config_entries
-from homeassistant.config_entries import ConfigFlowResult, OptionsFlowWithReload
+from homeassistant.config_entries import ConfigFlow
 from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
@@ -37,14 +37,14 @@ def _format_title(status: HspStatus, host: str) -> str:
     return f"{model} ({identifier})"
 
 
-class HspLocalConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class HspLocalConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Haas+Sohn (local)."""
 
     VERSION = 1
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
-    ) -> ConfigFlowResult:
+    ) -> dict[str, Any]:
         """Handle the initial step."""
         errors: dict[str, str] = {}
 
@@ -82,14 +82,17 @@ class HspLocalConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return HspLocalOptionsFlow()
 
 
-class HspLocalOptionsFlow(OptionsFlowWithReload):
+class HspLocalOptionsFlow(config_entries.OptionsFlow):
     """Handle options for the Haas+Sohn local integration."""
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
-    ) -> ConfigFlowResult:
+    ) -> dict[str, Any]:
         """Manage the options."""
         if user_input is not None:
+            self.hass.config_entries.async_schedule_reload(
+                self.config_entry.entry_id
+            )
             return self.async_create_entry(data=user_input)
 
         current = self.config_entry.options.get(

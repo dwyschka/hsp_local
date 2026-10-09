@@ -12,7 +12,7 @@ from homeassistant.components.climate import (
 )
 from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .coordinator import HspLocalConfigEntry, HspLocalDataUpdateCoordinator
 from .entity import HspLocalEntity
@@ -49,7 +49,7 @@ MODE_TO_HVAC_ACTION: dict[str, HVACAction] = {
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: HspLocalConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the Haas+Sohn climate entity."""
     async_add_entities([HspLocalClimateEntity(entry.runtime_data)])
@@ -68,6 +68,9 @@ class HspLocalClimateEntity(HspLocalEntity, ClimateEntity):
         | ClimateEntityFeature.TURN_ON
     )
     _attr_target_temperature_step = 1.0
+    # Set both the legacy and the native temperature unit so the entity works on
+    # older and newer Home Assistant versions.
+    _attr_temperature_unit = UnitOfTemperature.CELSIUS
     _attr_native_temperature_unit = UnitOfTemperature.CELSIUS
 
     def __init__(self, coordinator: HspLocalDataUpdateCoordinator) -> None:
@@ -90,13 +93,15 @@ class HspLocalClimateEntity(HspLocalEntity, ClimateEntity):
         mode = self.coordinator.data.mode.strip().lower()
         return MODE_TO_HVAC_ACTION.get(mode)
 
+    # Use the legacy property names: Home Assistant links the native properties
+    # to them automatically, so this works on every supported version.
     @property
-    def native_current_temperature(self) -> float | None:
+    def current_temperature(self) -> float | None:
         """Return the measured room temperature."""
         return self.coordinator.data.current_temperature
 
     @property
-    def native_target_temperature(self) -> float | None:
+    def target_temperature(self) -> float | None:
         """Return the target room temperature."""
         return self.coordinator.data.target_temperature
 

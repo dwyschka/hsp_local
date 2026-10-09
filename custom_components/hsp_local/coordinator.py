@@ -19,15 +19,16 @@ from .const import (
 )
 from .hsp_client import HspClient, HspConnectionError, HspError, HspStatus
 
-type HspLocalConfigEntry = ConfigEntry[HspLocalDataUpdateCoordinator]
+# Type alias for the config entry used by this integration.
+HspLocalConfigEntry = ConfigEntry
 
 
 class HspLocalDataUpdateCoordinator(DataUpdateCoordinator[HspStatus]):
     """Class to manage fetching Haas+Sohn stove data (locally)."""
 
-    config_entry: HspLocalConfigEntry
+    config_entry: ConfigEntry
 
-    def __init__(self, hass: HomeAssistant, entry: HspLocalConfigEntry) -> None:
+    def __init__(self, hass: HomeAssistant, entry: ConfigEntry) -> None:
         """Initialize the coordinator."""
         self.client = HspClient(
             session=async_get_clientsession(hass),
@@ -48,14 +49,6 @@ class HspLocalDataUpdateCoordinator(DataUpdateCoordinator[HspStatus]):
         try:
             return await self.client.async_get_status()
         except HspConnectionError as err:
-            raise UpdateFailed(
-                translation_domain=DOMAIN,
-                translation_key="communication_error",
-                translation_placeholders={"error": str(err)},
-            ) from err
+            raise UpdateFailed(f"Error communicating with the stove: {err}") from err
         except HspError as err:
-            raise UpdateFailed(
-                translation_domain=DOMAIN,
-                translation_key="unknown_error",
-                translation_placeholders={"error": str(err)},
-            ) from err
+            raise UpdateFailed(f"Unexpected error communicating with the stove: {err}") from err

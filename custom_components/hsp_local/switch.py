@@ -9,7 +9,7 @@ from typing import Any
 from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
 from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .coordinator import HspLocalConfigEntry, HspLocalDataUpdateCoordinator
 from .entity import HspLocalEntity
@@ -72,7 +72,7 @@ SWITCHES: tuple[HspSwitchEntityDescription, ...] = (
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: HspLocalConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up Haas+Sohn switch entities."""
     coordinator = entry.runtime_data
