@@ -1,0 +1,107 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Haas+Sohn pellet stove",
+        "description": "Enter the local IP address of your stove's Wi-Fi module and its PIN code. You can find the PIN on the stove under Menu \u2192 Network \u2192 WLAN PIN or on the label of the Wi-Fi module.",
+        "data": {
+          "host": "IP address or hostname",
+          "pin": "PIN code"
+        },
+        "data_description": {
+          "host": "The IP address of the Wi-Fi module on your local network, for example 192.168.0.23.",
+          "pin": "The PIN code is required to send commands to the stove."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the stove. Check the IP address and make sure the stove is powered on and reachable.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This stove is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Haas+Sohn options",
+        "data": {
+          "scan_interval": "Poll interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "How often the stove status is fetched. The default is 15 seconds."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "name": "Current temperature"
+      },
+      "target_temperature": {
+        "name": "Target temperature"
+      },
+      "mode": {
+        "name": "Status"
+      },
+      "error": {
+        "name": "Error"
+      },
+      "ignitions": {
+        "name": "Ignitions"
+      },
+      "on_time": {
+        "name": "Operating hours"
+      },
+      "consumption": {
+        "name": "Consumption"
+      },
+      "maintenance_in": {
+        "name": "Maintenance in"
+      },
+      "cleaning_in": {
+        "name": "Cleaning in"
+      },
+      "heating_curve": {
+        "name": "Heating curve"
+      }
+    },
+    "binary_sensor": {
+      "week_program_active": {
+        "name": "Week timer"
+      },
+      "pgi": {
+        "name": "PGI"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Power"
+      },
+      "week_program": {
+        "name": "Weekly program"
+      },
+      "eco_mode": {
+        "name": "Eco mode"
+      }
+    },
+    "button": {
+      "clear_error": {
+        "name": "Clear error"
+      }
+    }
+  },
+  "exceptions": {
+    "authentication_error": {
+      "message": "The stove rejected the command. Check the PIN code in the integration options."
+    },
+    "communication_error": {
+      "message": "An error occurred while communicating with the stove: {error}"
+    },
+    "unknown_error": {
+      "message": "An unexpected error occurred while communicating with the stove: {error}"
+    }
+  }
+}

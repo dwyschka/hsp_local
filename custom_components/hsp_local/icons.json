@@ -1,0 +1,63 @@
+{
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "default": "mdi:thermometer"
+      },
+      "target_temperature": {
+        "default": "mdi:thermometer-check"
+      },
+      "mode": {
+        "default": "mdi:fireplace"
+      },
+      "error": {
+        "default": "mdi:alert-circle",
+        "state": {
+          "none": "mdi:check-circle"
+        }
+      },
+      "ignitions": {
+        "default": "mdi:fire"
+      },
+      "on_time": {
+        "default": "mdi:clock-outline"
+      },
+      "consumption": {
+        "default": "mdi:counter"
+      },
+      "maintenance_in": {
+        "default": "mdi:wrench-clock"
+      },
+      "cleaning_in": {
+        "default": "mdi:broom"
+      },
+      "heating_curve": {
+        "default": "mdi:chart-line"
+      }
+    },
+    "binary_sensor": {
+      "week_program_active": {
+        "default": "mdi:calendar-clock"
+      },
+      "pgi": {
+        "default": "mdi:help-circle-outline"
+      }
+    },
+    "switch": {
+      "power": {
+        "default": "mdi:power"
+      },
+      "week_program": {
+        "default": "mdi:calendar-clock"
+      },
+      "eco_mode": {
+        "default": "mdi:leaf"
+      }
+    },
+    "button": {
+      "clear_error": {
+        "default": "mdi:alert-remove"
+      }
+    }
+  }
+}

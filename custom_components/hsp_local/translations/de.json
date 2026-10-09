@@ -1,0 +1,107 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Haas+Sohn Pelletofen",
+        "description": "Gib die lokale IP-Adresse des WLAN-Moduls deines Ofens und die PIN ein. Die PIN findest du am Ofen unter Men\u00fc \u2192 Netzwerk \u2192 WLAN-PIN oder auf dem Aufkleber des WLAN-Moduls.",
+        "data": {
+          "host": "IP-Adresse oder Hostname",
+          "pin": "PIN-Code"
+        },
+        "data_description": {
+          "host": "Die IP-Adresse des WLAN-Moduls in deinem lokalen Netzwerk, zum Beispiel 192.168.0.23.",
+          "pin": "Der PIN-Code wird ben\u00f6tigt, um Befehle an den Ofen zu senden."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Ofen fehlgeschlagen. Pr\u00fcfe die IP-Adresse und stelle sicher, dass der Ofen eingeschaltet und erreichbar ist.",
+      "unknown": "Unerwarteter Fehler."
+    },
+    "abort": {
+      "already_configured": "Dieser Ofen ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Haas+Sohn Optionen",
+        "data": {
+          "scan_interval": "Abfrageintervall (Sekunden)"
+        },
+        "data_description": {
+          "scan_interval": "Wie oft der Ofenstatus abgerufen wird. Standard sind 15 Sekunden."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "name": "Aktuelle Temperatur"
+      },
+      "target_temperature": {
+        "name": "Zieltemperatur"
+      },
+      "mode": {
+        "name": "Status"
+      },
+      "error": {
+        "name": "Fehler"
+      },
+      "ignitions": {
+        "name": "Z\u00fcndungen"
+      },
+      "on_time": {
+        "name": "Betriebsstunden"
+      },
+      "consumption": {
+        "name": "Verbrauch"
+      },
+      "maintenance_in": {
+        "name": "Wartung in"
+      },
+      "cleaning_in": {
+        "name": "Reinigung in"
+      },
+      "heating_curve": {
+        "name": "Heizkurve"
+      }
+    },
+    "binary_sensor": {
+      "week_program_active": {
+        "name": "Wochentimer"
+      },
+      "pgi": {
+        "name": "PGI"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Ein/Aus"
+      },
+      "week_program": {
+        "name": "Wochenprogramm"
+      },
+      "eco_mode": {
+        "name": "Eco-Modus"
+      }
+    },
+    "button": {
+      "clear_error": {
+        "name": "Fehler quittieren"
+      }
+    }
+  },
+  "exceptions": {
+    "authentication_error": {
+      "message": "Der Ofen hat den Befehl abgelehnt. Pr\u00fcfe den PIN-Code in den Optionen der Integration."
+    },
+    "communication_error": {
+      "message": "Bei der Kommunikation mit dem Ofen ist ein Fehler aufgetreten: {error}"
+    },
+    "unknown_error": {
+      "message": "Bei der Kommunikation mit dem Ofen ist ein unerwarteter Fehler aufgetreten: {error}"
+    }
+  }
+}
