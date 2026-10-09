@@ -1,8 +1,10 @@
 """Constants for the Haas+Sohn local integration."""
 
+import logging
 from typing import Final
 
 DOMAIN: Final = "hsp_local"
+LOGGER: Final = logging.getLogger(__package__)
 
 CONF_HOST: Final = "host"
 CONF_PIN: Final = "pin"

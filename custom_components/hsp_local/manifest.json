@@ -9,5 +9,5 @@
   "issue_tracker": "https://github.com/dwyschka/hsp_local/issues",
   "loggers": ["custom_components.hsp_local"],
   "requirements": [],
-  "version": "1.0.4"
+  "version": "1.0.5"
 }
