@@ -4,10 +4,10 @@
   "codeowners": ["@dwyschka"],
   "config_flow": true,
   "documentation": "https://github.com/dwyschka/hsp_local",
-  "issue_tracker": "https://github.com/dwyschka/hsp_local/issues",
   "integration_type": "device",
   "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/dwyschka/hsp_local/issues",
   "loggers": ["custom_components.hsp_local"],
   "requirements": [],
-  "version": "1.0.0"
+  "version": "1.0.3"
 }
